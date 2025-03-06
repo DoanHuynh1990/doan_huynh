@@ -1,28 +1,36 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
-// vung ben ngoai ham
-//int bien_toan_cuc;	
+
 void main()
 {
-	//vung ben trong ham
-	//unsigned char x = 1233;
-	int x = 10;
-	int y = 13;
 
-	printf("nhap gia tri cho x:");
-	scanf_s("%d", &x);
+	printf("Xep loai hoc sinh dua vao diem TB\n");
 
-	printf("nhap gia tri cho y:");
-	scanf("%d", &y);
+	float diemTB = 10;
 
-	if (x > y)
+
+	printf("nhap gia tri cho diemTB:");
+	scanf_s("%f", &diemTB);
+
+
+
+	if (diemTB  >= 8.0)
 	{
-		printf("Gia tri x:%d \n", x);
+		printf("Loai : Gioi");
 
+	}
+	else if (diemTB >=6.5)
+	{
+		printf("Loai : Kha");
+	}
+	else if (diemTB >= 5.0)
+
+	{
+		printf("Loai : Trung BInh");
 	}
 	else
 	{
-		printf("Gia tri y:%d \n", y);
+		printf("Loai : Yeu");
 	}
 
 	
