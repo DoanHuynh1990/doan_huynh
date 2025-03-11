@@ -13,7 +13,7 @@ void main()
         cout = a;
 
         for (b = 1; b <= 10; b++) {
-            printf(" %3d", cout * b);
+            printf("%dx%d=%d\t", cout,b,cout * b);
         }
 
         printf("\n");
