@@ -3,22 +3,37 @@
 
 void main()
 {
-    int a, b, cout;
-    int st, ed;
+	int a = 0;
+	int b = 0;
+	int c = 0;
+	int d = 0;
+	int so_tien_can_tra = 0;
+	int change = 0;
 
-    st = 2, ed = 9;
+	do
+	{
+		printf("Nhap so tien can rut: ", so_tien_can_tra);
+		scanf_s("%d", &so_tien_can_tra);
+		if ((so_tien_can_tra % 50000) != 0)
+		{
+			printf("SO TIEN CAN RUT PHAI LA BOI SO CUA 50k\n");
+		}
 
-    printf("In bang cuu chuong:\n");
-    for (a = st; a <= ed; a++) {
-        cout = a;
+	} while ((so_tien_can_tra%50000)!=0);
 
-        for (b = 1; b <= 10; b++) {
-            printf("%dx%d=%d\t", cout,b,cout * b);
-        }
 
-        printf("\n");
-    }
+		change = so_tien_can_tra / 50000;
+		a = change / 17;
+		b = (change % 17)/7;
+		c = ((change % 17) % 7) / 3;
+		d = (((change % 17) % 7) % 3)/1;
+		printf("So to 500k: %d\n", a);
+		printf("So to 200k: %d\n", a+b);
+		printf("So to 100k : %d\n", a + b + c);
+		printf("So to 50k: %d\n", a + b + c + d);
 
-  
+
+
+
 }
 
