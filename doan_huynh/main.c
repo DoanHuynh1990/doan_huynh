@@ -1,18 +1,24 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-
-void main()
+#include<stdio.h>
+int main()
 {
-	int a = 1;
+   
+    int a, b;
+  
+    printf("nhap a:");
+    scanf("%d", &a);
+   
+    printf("nhap b:");
+    scanf("%d", &b);
 
-
-	do
-	{
-		printf("Nhap vao man hinh: ", a);
-		scanf_s("%d", &a);
-	
-	} while (a!=0);
-
-
+    while (a * b != 0) {
+        if (a > b) {
+            a %= b; // a = a % b
+        }
+        else {
+            b %= a;
+        }
+    }
+  
+    printf("UCLN là :%d", a + b);
 }
-
