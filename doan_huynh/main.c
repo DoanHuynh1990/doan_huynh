@@ -8,13 +8,16 @@ int main()
 	int tong = 0;
 	for ( int i = 0; i < 10; i++)
 	{
-		printf("Nhap num i:%d ",&i);
+		printf("Nhap num %d : ",i);
 		scanf_s("%d", &arr_1[i]);
 
+	}
+	for (int j = 0; j < 9; j++)
+	{
+		tong += arr_1[j];
 
 	}
-
-
+	printf("Tong :%d", tong);
 
 
 
