@@ -2,23 +2,21 @@
 #include<stdio.h>
 int main()
 {
-   
-    int a, b;
-  
-    printf("nhap a:");
-    scanf("%d", &a);
-   
-    printf("nhap b:");
-    scanf("%d", &b);
+	//khai bao 10 doi tuong kieu iteger
 
-    while (a * b != 0) {
-        if (a > b) {
-            a %= b; // a = a % b
-        }
-        else {
-            b %= a;
-        }
-    }
-  
-    printf("UCLN là :%d", a + b);
-}
+	int arr_1[10] = {0};   // cach 1
+	int tong = 0;
+	for ( int i = 0; i < 10; i++)
+	{
+		printf("Nhap num i:%d ",&i);
+		scanf_s("%d", &arr_1[i]);
+
+
+	}
+
+
+
+
+
+
+}	
