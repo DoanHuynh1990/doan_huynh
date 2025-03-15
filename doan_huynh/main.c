@@ -14,7 +14,7 @@ int main()
 		}
 		
 	}
-	printf("In tat ca phan tu cua mang: \n\n");
+	printf("In tat ca phan tu cua mang: \n");
 	for (loop = 0; loop < arr_size; loop++)
 		printf("%d ", arr[loop]);
 
