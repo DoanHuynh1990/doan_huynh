@@ -2,18 +2,25 @@
 #include<stdio.h>
 int main()
 {
-	int arr[] = { 1,2,-4,5,3,455,-6,34,9 };
+	int arr[] = { 6,2,5,5,3,455,7,34,9 };
 	int arr_size = sizeof(arr) / sizeof(arr[0]);
-	int max_value = 0;
+	
 
 	for (int i = 0; i < arr_size; i++)
 	{
-		if (max_value < arr[i])
+		int prime = 0;
+		for (int j = 1; j <= arr[i]; j++)
 		{
-			max_value = arr[i];
+			if ((arr[i]%j)==0)
+				prime++;
+		}
+		switch (prime)
+		{
+		case 2:
+			printf("So nguyen to: %d\n", arr[i]);
 		}
 		
 	}
-
-	printf("So lon nhat : %d", max_value);
+	
+	
 }	
