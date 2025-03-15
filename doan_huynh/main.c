@@ -2,16 +2,22 @@
 #include<stdio.h>
 int main()
 {
-	/// Khai bao chuoi Hello
+	int arr[] = { 1,2,4,5,3,455,5,34,9 };
+	int arr_size = sizeof(arr) / sizeof(arr[0]);
+	int odd_nums = 0;
+	int odd_total = 0;
+	float odd_ave = 0;
 
-	char str_3[] = "xin chao";
-	int dem = 0;
+		for (int i = 0; i < arr_size; i++)
+		{
+			if ((arr[i] % 2) != 0)
+				odd_nums++;
+			    odd_total += arr[i];
 
-	for (int i = 0; str_3[i] != 0; i++)
-	{
-		dem++;
-	}
+		}
+		odd_ave = odd_total / odd_nums;
+		printf("Tong so le: %d", odd_total);
+		printf("Trung binh cong so le: %f", odd_ave);
 
-	printf("dem: %d", dem);
-
+	
 }	
