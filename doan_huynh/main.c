@@ -2,23 +2,21 @@
 #include<stdio.h>
 int main()
 {
-	char str[] = "Xin chao";
+	char str[] = "Xin Chao moi nguoi ^%$";
 	int str_len = 0;
 	int UPPER_num = 0;
 
 	while (str[str_len] != 0) {
 		str_len++;
 	}
-	printf("Chieu dai cua chuoi: %d\n", str_len);
-
 	for (int i = 0; i < str_len; i++)
 	{
-		if (str[i]>='A' && str[i]<='Z')
+		if (str[i]>='a' && str[i]<='z')
 		{
-			UPPER_num++;
+			str[i] -= 32;
 		}
 	}
+	printf("%s\n", str);
 
-	printf("So luong chu in HOA: %d\n", UPPER_num);
 
 }	
