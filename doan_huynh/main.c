@@ -4,19 +4,20 @@ int main()
 {
 	char str[] = "Xin Chao moi nguoi ^%$";
 	int str_len = 0;
-	int UPPER_num = 0;
+	int Space_num = 0;
 
 	while (str[str_len] != 0) {
 		str_len++;
 	}
 	for (int i = 0; i < str_len; i++)
 	{
-		if (str[i]>='a' && str[i]<='z')
+		if (str[i]==32)
 		{
-			str[i] -= 32;
+			Space_num++;
 		}
 	}
-	printf("%s\n", str);
+	printf("So tu trong chuoi : %d", Space_num+1);
+
 
 
 }	
