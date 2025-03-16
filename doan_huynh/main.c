@@ -2,25 +2,23 @@
 #include<stdio.h>
 int main()
 {
-	int arr[] = { 6,2,5,5,3,455,7,34,9 };
-	int arr_size = sizeof(arr) / sizeof(arr[0]);
-	
+	char str[] = "Xin chao";
+	int str_len = 0;
+	int UPPER_num = 0;
 
-	for (int i = 0; i < arr_size; i++)
-	{
-		int prime = 0;
-		for (int j = 1; j <= arr[i]; j++)
-		{
-			if ((arr[i]%j)==0)
-				prime++;
-		}
-		switch (prime)
-		{
-		case 2:
-			printf("So nguyen to: %d\n", arr[i]);
-		}
-		
+	while (str[str_len] != 0) {
+		str_len++;
 	}
-	
-	
+	printf("Chieu dai cua chuoi: %d\n", str_len);
+
+	for (int i = 0; i < str_len; i++)
+	{
+		if (str[i]>='A' && str[i]<='Z')
+		{
+			UPPER_num++;
+		}
+	}
+
+	printf("So luong chu in HOA: %d\n", UPPER_num);
+
 }	
