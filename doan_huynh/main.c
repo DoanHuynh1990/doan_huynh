@@ -1,23 +1,20 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 
-// Khai bao ham tinh tong cac gia tri trong mang
-int TB_sole(char*dia_chi,int so_luong)
+// Khai bao ham In ra so lon nhat trong man
+int VT_max(char*dia_chi,int so_luong)
 {
-	int sl = 0;
-	int tong = 0;
-	float ketqua = 0;
+	int max = 0;
 	for (int i = 0; i < so_luong; i++)
 	{
 
-		if ((*(dia_chi + i)%2) != 0){
-			sl++;
-			tong += *(dia_chi + i);
-		}
+		if (max<*(dia_chi+i))
+			max= *(dia_chi + i);
+		
 	}
-	ketqua = tong / sl;
+	
 
-	return ketqua;
+	return max;
 
 }
 
@@ -26,13 +23,13 @@ void main()
 {
 	
 
-	 char mang1[] = { 1,2,3,15};
-	 float x = TB_sole(mang1, 4);
+	 char mang1[] = { 1,2,20,15};
+	 for (int i = 0; i < sizeof(mang1)/sizeof(mang1[0]); i++)
+	 {
+		 if (mang1[i] == VT_max(mang1, 4))
+			 printf("Vi tri so lon nhat:%d", i);
 
-	 
+	 }
 
-	 //In ra tong cac gia tri trong mang
 
-	 printf("Tong cac gia tri cua mang: %f", x);
-     
 }	
