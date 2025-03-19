@@ -1,20 +1,30 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
+
+// Khai bao ham tinh tong cac gia tri trong mang
+int Tong_mang(char*dia_chi,int so_luong)
+{
+	int ketqua = 0;
+	for (int i = 0; i < so_luong; i++)
+	{
+		ketqua += *(dia_chi + i);
+
+	}
+	return ketqua;
+
+}
+
+
 void main()
 {
-	int a, b;
+	
 
-	printf("Input a value: ");
-	scanf_s("%d", &a);
-	printf("Input b value: ");
-	scanf_s("%d", &b);
+	 char mang1[] = { 1,2,3,4 };
+	 char mang2[] = { 1,2,3 };
+	 int x = Tong_mang(mang1, 4);
 
-	printf("Hien thi a,b truoc hoan vi: %d,%d\n",a,  b);
+	 //In ra tong cac gia tri trong mang
 
-	a = a + b;
-	b = a - b;
-	a = a - b;
-
-	printf("Hien thi a,b sau hoan vi: %d,%d", a, b);
-
+	 printf("Tong cac gia tri cua mang: %d", x);
+     
 }	
