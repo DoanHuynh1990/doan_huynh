@@ -2,14 +2,21 @@
 #include<stdio.h>
 
 // Khai bao ham tinh tong cac gia tri trong mang
-int Tong_mang(char*dia_chi,int so_luong)
+int TB_sole(char*dia_chi,int so_luong)
 {
-	int ketqua = 0;
+	int sl = 0;
+	int tong = 0;
+	float ketqua = 0;
 	for (int i = 0; i < so_luong; i++)
 	{
-		ketqua += *(dia_chi + i);
 
+		if ((*(dia_chi + i)%2) != 0){
+			sl++;
+			tong += *(dia_chi + i);
+		}
 	}
+	ketqua = tong / sl;
+
 	return ketqua;
 
 }
@@ -19,12 +26,13 @@ void main()
 {
 	
 
-	 char mang1[] = { 1,2,3,4 };
-	 char mang2[] = { 1,2,3 };
-	 int x = Tong_mang(mang1, 4);
+	 char mang1[] = { 1,2,3,15};
+	 float x = TB_sole(mang1, 4);
+
+	 
 
 	 //In ra tong cac gia tri trong mang
 
-	 printf("Tong cac gia tri cua mang: %d", x);
+	 printf("Tong cac gia tri cua mang: %f", x);
      
 }	
