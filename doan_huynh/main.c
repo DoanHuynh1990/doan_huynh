@@ -1,39 +1,31 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include<stdio.h>
 
+typedef int so_nguyen_t;
+// xay dung struct;
 
-int Len(char* str)
+typedef struct 
 {
-    int diem = 0;
-    while (str[diem] != 0)
-    {
-        diem++;
+	int tu;
+	int mau;
 
-    }
-    return diem;
-}
-
-
-char VitriC(char* str,char c)
+}phan_so;
+phan_so nhanPhanSo(phan_so ps1, phan_so ps2)
 {
-    int len_chuoi = Len(str);
-    for (int i = 0; i < len_chuoi; i++)
-    {
-        if (str[i] == c) {
-            return str + i;
-        }
-          
-    }
-    return 0;
-          
+    phan_so ketQua;
+    ketQua.tu = ps1.tu * ps2.tu;
+    ketQua.mau = ps1.mau * ps2.mau;
+    return ketQua;
 }
-
 
 void main()
 {
-    char str[] = "xin chao moi nguoi";
-   
-   int x = VitriC(str,'n');
-   printf("%d", x);
-       
+    phan_so ps1 = { 2, 3 }; 
+    phan_so ps2 = { 4, 5 }; 
+
+    phan_so ketQua = nhanPhanSo(ps1, ps2);
+
+    printf("Nhan phan so: %d/%d\n", ketQua.tu, ketQua.mau);
+  
+
 }	
