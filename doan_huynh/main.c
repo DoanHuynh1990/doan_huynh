@@ -4,28 +4,44 @@
 typedef int so_nguyen_t;
 // xay dung struct;
 
-typedef struct 
+typedef struct
 {
 	int tu;
 	int mau;
 
 }phan_so;
-phan_so nhanPhanSo(phan_so ps1, phan_so ps2)
+// so sanh 2 phan so
+int compare(phan_so ps1, phan_so ps2) 
 {
-    phan_so ketQua;
-    ketQua.tu = ps1.tu * ps2.tu;
-    ketQua.mau = ps1.mau * ps2.mau;
-    return ketQua;
+    return (ps1.tu * ps2.mau > ps2.tu * ps1.mau);
 }
+// tim phan solon nhat
+phan_so phansomax(phan_so arr[], int size) {
+    phan_so max = arr[0]; 
+
+    for (int i = 1; i < size; i++) {
+        if (compare(arr[i], max)) {
+            max = arr[i]; 
+        }
+    }
+    return max;
+}
+
 
 void main()
 {
-    phan_so ps1 = { 2, 3 }; 
-    phan_so ps2 = { 4, 5 }; 
 
-    phan_so ketQua = nhanPhanSo(ps1, ps2);
+    phan_so mang[] = {
+        {1,2},
+        {2,3},
+        {3,4},
+        {4,5},
+        {5,6}
+    };
 
-    printf("Nhan phan so: %d/%d\n", ketQua.tu, ketQua.mau);
-  
+    int size = sizeof(mang) / sizeof(mang[0]);
+    phan_so Phansolonnhat = phansomax(mang, size);
+
+    printf("%d/%d\n", Phansolonnhat.tu, Phansolonnhat.mau);
 
 }	
