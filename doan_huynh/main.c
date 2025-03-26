@@ -7,23 +7,25 @@ typedef struct
     int mau;
  }phan_so;
 
-phan_so subtract_fractions(phan_so a, phan_so b) {
-    phan_so result;
-    result.tu = a.tu * b.mau - b.tu * a.mau;
-    result.mau = a.mau * b.mau;
-
-    return result;
+phan_so rut_gon(phan_so ps) {
+    int a = ps.tu, b = ps.mau;
+    if (a < 0) a = -a; 
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    int USCLN = a;
+    ps.tu /= USCLN;
+    ps.mau /= USCLN;
+    return ps;
 }
+
 
 void main()
 {
-    phan_so ps1 = { 2, 3 };
-    phan_so ps2 = { 4, 5 };
-
-    phan_so result_subtract = subtract_fractions(ps1, ps2);
-    printf("Ket qua tru phan so: %d/%d\n", result_subtract.tu, result_subtract.mau);
-
-
-
-
+    phan_so ps = { 9, 12 };
+    phan_so result = rut_gon(ps);
+    printf("Phan so rut gon: %d/%d\n", result.tu, result.mau);
+    
 }	
