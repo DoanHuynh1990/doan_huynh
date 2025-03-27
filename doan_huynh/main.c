@@ -19,5 +19,5 @@ void main() {
     printf("KQ: %d\n", led_check(str)); 
     
 
-    return 0;
+   
 }
