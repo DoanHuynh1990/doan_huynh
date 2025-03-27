@@ -1,31 +1,23 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include<stdio.h>
+#include <stdio.h>
+#include <string.h>
 
-typedef struct
-{
-    int tu;
-    int mau;
- }phan_so;
+#include <stdio.h>
+#include <string.h>
 
-phan_so rut_gon(phan_so ps) {
-    int a = ps.tu, b = ps.mau;
-    if (a < 0) a = -a; 
-    while (b != 0) {
-        int temp = b;
-        b = a % b;
-        a = temp;
+int led_check(char* input) {
+    if (strstr(input, "led_2: OFF"))  {
+        return 1;
     }
-    int USCLN = a;
-    ps.tu /= USCLN;
-    ps.mau /= USCLN;
-    return ps;
+    return 0;
 }
 
+void main() {
+    char* str = "led_1: ON,led_2: OFF, led_3: ON";
+   
 
-void main()
-{
-    phan_so ps = { 9, 12 };
-    phan_so result = rut_gon(ps);
-    printf("Phan so rut gon: %d/%d\n", result.tu, result.mau);
+    printf("KQ: %d\n", led_check(str)); 
     
-}	
+
+    return 0;
+}
