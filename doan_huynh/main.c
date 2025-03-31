@@ -13,6 +13,21 @@ typedef struct {
     int len;
 } linked_list_t;
 
+void RemoveLastNode(linked_list_t* ll) {
+    if (ll->len == 0) return;
+
+    node_t* last = ll->last_node;
+    ll->last_node = last->previous_node;
+
+    if (ll->last_node)
+        ll->last_node->next_node = NULL;
+    else
+        ll->head = NULL;
+
+    free(last);
+    ll->len--;
+}
+
 void InsertNodeAtIndex(linked_list_t* ll, int val, int index) {
     if (index < 0 || index > ll->len) return;
 
@@ -40,15 +55,18 @@ void InsertNodeAtIndex(linked_list_t* ll, int val, int index) {
 }
 
 int main() {
-    linked_list_t ll = { 0 };
+    linked_list_t ll = {0};
 
     InsertNodeAtIndex(&ll, 10, 0);
     InsertNodeAtIndex(&ll, 20, 1);
     InsertNodeAtIndex(&ll, 30, 2);
-    InsertNodeAtIndex(&ll, 15, 1);
-    InsertNodeAtIndex(&ll, 5, 0);
-    InsertNodeAtIndex(&ll, 40, 5);
+    InsertNodeAtIndex(&ll, 40, 3);
 
-    printf("So luong node: %d\n", ll.len);
+    RemoveLastNode(&ll);
+    RemoveLastNode(&ll);
+    RemoveLastNode(&ll);
+    
+
+    printf("So luong node con lai: %d\n", ll.len);
     return 0;
 }
