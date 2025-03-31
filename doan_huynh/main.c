@@ -1,25 +1,48 @@
-#define _CRT_SECURE_NO_WARNINGS
-#include <stdio.h>
-#include <string.h>
+﻿#include <stdio.h>
+#include <stdlib.h>
 
-int led_check(char* input) {
-    char* tu_khoa = "led_2: ";
-    char* a = strstr(input, tu_khoa);
-    
-    a += strlen(tu_khoa); 
-    if (a[0] == 'O' && a[1] == 'N') {
-        return 1;
-    }
-    return 0;
+
+typedef struct Node {
+    int value;
+    struct Node* previous_node;
+    struct Node* next_node;
+} node_t;
+
+
+typedef struct {
+    node_t* last_node;
+    node_t* head;
+    int len;
+} linked_list_t;
+
+
+void AddNodeToList(linked_list_t* ll, int val) {
+    node_t* node = malloc(sizeof(node_t));
+    node->value = val;
+    node->previous_node = ll->last_node;
+    node->next_node = NULL;
+
+    if (ll->last_node) ll->last_node->next_node = node;
+    else ll->head = node;
+
+    ll->last_node = node;
+    ll->len++;
 }
 
-int main() {
 
-    char *str = "led_1: ON, led_2: ON, led_3: ON";
-   
+int GetLen(linked_list_t* ll) {
+    return ll->len;
+}
 
-    printf("Test : %d\n", led_check(str)); 
- 
 
-   
+void main() {
+    linked_list_t ll = { 0 };
+
+    AddNodeToList(&ll, 10);
+    AddNodeToList(&ll, 20);
+    AddNodeToList(&ll, 30);
+
+    printf("So luong node: %d\n", GetLen(&ll));
+
+    return 0;
 }
