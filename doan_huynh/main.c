@@ -13,31 +13,6 @@ typedef struct {
     int len;
 } linked_list_t;
 
-void RemoveIndex(linked_list_t* ll, int index) {
-    if (index < 0 || index >= ll->len) return;
-
-    node_t* temp = ll->head;
-
-    if (index == 0) {
-        ll->head = temp->next_node;
-        if (ll->head)
-            ll->head->previous_node = NULL;
-        else
-            ll->last_node = NULL;
-    }
-    else {
-        for (int i = 0; i < index; i++) temp = temp->next_node;
-        temp->previous_node->next_node = temp->next_node;
-        if (temp->next_node)
-            temp->next_node->previous_node = temp->previous_node;
-        else
-            ll->last_node = temp->previous_node;
-    }
-
-    free(temp);
-    ll->len--;
-}
-
 void InsertNodeAtIndex(linked_list_t* ll, int val, int index) {
     if (index < 0 || index > ll->len) return;
 
@@ -64,20 +39,31 @@ void InsertNodeAtIndex(linked_list_t* ll, int val, int index) {
     ll->len++;
 }
 
+int Search(linked_list_t* ll, int value) {
+    node_t* temp = ll->head;
+    int index = 0;
+
+    while (temp) {
+        if (temp->value == value) return index;
+        temp = temp->next_node;
+        index++;
+    }
+
+    return -1;
+}
+
 int main() {
     linked_list_t ll = {0};
 
-    InsertNodeAtIndex(&ll, 10, 0);
-    InsertNodeAtIndex(&ll, 20, 1);
-    InsertNodeAtIndex(&ll, 30, 2);
-    InsertNodeAtIndex(&ll, 40, 3);
-    InsertNodeAtIndex(&ll, 50, 4);
+    InsertNodeAtIndex(&ll, 32, 0);
+    InsertNodeAtIndex(&ll, 43, 1);
+    InsertNodeAtIndex(&ll, 656, 2);
+    InsertNodeAtIndex(&ll, 7887, 3);
+    InsertNodeAtIndex(&ll, 34534, 4);
 
-    RemoveIndex(&ll, 2); 
-    RemoveIndex(&ll, 0); 
-    RemoveIndex(&ll, ll.len - 1); 
-
-    printf("So luong node con lai: %d\n", ll.len); 
+    printf("Find 32: %d\n", Search(&ll, 32)); 
+    printf("Find 7887: %d\n", Search(&ll, 7887));
+    
 
     return 0;
 }
