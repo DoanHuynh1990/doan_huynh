@@ -1,25 +1,43 @@
 ﻿#include <stdio.h>
 #include <stdlib.h>
+#include <Windows.h>
 
 
-#include <stdio.h>
+DWORD WINAPI function_1(_In_ LPVOID lpParameter)
+{
+    while (1) {
+        printf("funtion is running...\n");
+        Sleep(1000);
 
-typedef union {
-    unsigned short x;
-    unsigned char y[2];  
-} union_t;
+    }
+}
+
+DWORD WINAPI function_2(_In_ LPVOID lpParameter)
+{
+    while (1) {
+        printf("funtion is running...\n");
+        Sleep(500);
+
+    }
+
+}
 
 void main() {
-    union_t sv;
-    sv.x = 0x1234;
+    HANDLE thread_1= CreateThread(NULL,1024,function_1,NULL,0,NULL);
+    HANDLE thread_2 = CreateThread(NULL, 1024, function_2, NULL, 0, NULL);
+    int cnt = 0;
 
-    unsigned char low = sv.y[0];
-    unsigned char high = sv.y[1];
+    while (1) 
+    {
+        printf("main is running...\n");
+        Sleep(1000);
+        if (cnt++ == 5) 
+        {
+            SuspendThread(thread_1);
+            SuspendThread(thread_2);
 
-    printf("Low  byte: 0x%02X\n", low);  
-    printf("High byte: 0x%02X\n", high);  
-
- 
-}
+        }
+    }
+ }
 
 
