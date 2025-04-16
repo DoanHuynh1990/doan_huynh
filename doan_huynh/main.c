@@ -22,6 +22,7 @@ void main() {
     int so_hoc_sinh = 0;
     hocsinh_t hs;
 
+   
     while (fscanf(pf, "%[^,],%d,%[^,],%d,%d\n", hs.ten, &hs.tuoi, hs.gioi_tinh, &hs.mon1, &hs.mon2) == 5) {
         hs.dtb = (float)(hs.mon1 + hs.mon2) / 2;
         danh_sach_hs[so_hoc_sinh] = hs;
@@ -30,20 +31,35 @@ void main() {
 
     fclose(pf);
 
-     for (int i = 0; i < so_hoc_sinh - 1; i++) {
+ 
+    for (int i = 0; i < so_hoc_sinh - 1; i++) {
         for (int j = 0; j < so_hoc_sinh - i - 1; j++) {
             if (danh_sach_hs[j].dtb < danh_sach_hs[j + 1].dtb) {
-                                hocsinh_t temp = danh_sach_hs[j];
+                // Hoán đổi vị trí hai học sinh
+                hocsinh_t temp = danh_sach_hs[j];
                 danh_sach_hs[j] = danh_sach_hs[j + 1];
                 danh_sach_hs[j + 1] = temp;
             }
         }
     }
 
-       printf("Danh sach hoc sinh theo diem TB tu cao den thap:\n");
-    for (int i = 0; i < so_hoc_sinh; i++) {
-        printf("Ten: %s\n", danh_sach_hs[i].ten);
-        printf("Diem TB: %.2f\n", danh_sach_hs[i].dtb);
-        printf("\n");
+  
+    FILE* pf_out = fopen("C:\\Users\\win10\\Downloads\\DanhSachHocSinh_Sorted.csv", "w");
+    if (pf_out == NULL) {
+        printf("Luu file that bai!\n");
+        return;
     }
+
+
+    fprintf(pf_out, "Ten,Tuoi,Gioi_Tinh,Mon1,Mon2,DiemTB\n");
+
+
+    for (int i = 0; i < so_hoc_sinh; i++) {
+        fprintf(pf_out, "%s,%d,%s,%d,%d,%.2f\n", danh_sach_hs[i].ten, danh_sach_hs[i].tuoi, danh_sach_hs[i].gioi_tinh,
+            danh_sach_hs[i].mon1, danh_sach_hs[i].mon2, danh_sach_hs[i].dtb);
+    }
+
+    fclose(pf_out);
+
+    printf("Danh sach hoc sinh da duoc luu vao file 'DanhSachHocSinh_Sorted.csv'.\n");
 }
