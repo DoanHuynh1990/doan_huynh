@@ -1,14 +1,12 @@
 #ifndef PHAN_SO_H
 #define PHAN_SO_H
 
-class PhanSo {
+class phan_so {
 public:
-    int tu;
-    int mau;
+    int tu_so;
+    int mau_so;
 
-  PhanSo(int tu = 0, int mau = 1);
-  PhanSo nhan(const PhanSo& ps2);
-  };
+    phan_so nhan_phan_so(phan_so khac);
+};
 
 #endif
-

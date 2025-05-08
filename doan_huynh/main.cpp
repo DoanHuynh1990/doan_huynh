@@ -1,12 +1,20 @@
-﻿#include "phanso.h"
-#include <stdio.h>
+﻿#include <stdio.h>
+#include "phan_so.h"
 
 void main() {
-    PhanSo a(1, 2);
-    PhanSo b(3, 4);
+    phan_so a;
+    a.tu_so = 1;
+    a.mau_so = 2;
 
-    PhanSo c = a.nhan(b);
+    phan_so b;
+    b.tu_so = 2;
+    b.mau_so = 3;
 
-    printf("%d/%d\n", c.tu, c.mau);  
+    phan_so c;
+    c = a.nhan_phan_so(b);
 
-  }
+    printf("Ket qua: %d/%d\n", c.tu_so, c.mau_so);
+
+  
+}
+

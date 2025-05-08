@@ -1,15 +1,8 @@
-#include "phanso.h"
-#include <stdio.h>
+#include "phan_so.h"
 
-PhanSo::PhanSo(int tu, int mau) {
-    this->tu = tu;
-    this->mau = mau;
-}
-
-PhanSo PhanSo::nhan(const PhanSo& ps2) {
-    PhanSo kq;
-    kq.tu = this->tu * ps2.tu;
-    kq.mau = this->mau * ps2.mau;
+phan_so phan_so::nhan_phan_so(phan_so khac) {
+    phan_so kq;
+    kq.tu_so = tu_so * khac.tu_so;
+    kq.mau_so = mau_so * khac.mau_so;
     return kq;
 }
-
