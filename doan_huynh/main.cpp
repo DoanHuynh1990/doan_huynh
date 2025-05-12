@@ -1,28 +1,63 @@
 ﻿#include <stdio.h>
 
-
 class phan_so {
 public:
     int tu_so;
     int mau_so;
 
-   
-    bool lon_hon(phan_so khac) {
-        return (tu_so * khac.mau_so > khac.tu_so * mau_so);
+
+    phan_so(int tu = 0, int mau = 1) {
+        tu_so = tu;
+        mau_so = mau;
+    }
+
+    // So sánh >
+    bool operator>(phan_so khac) {
+        return tu_so * khac.mau_so > khac.tu_so * mau_so;
+    }
+
+    // So sánh <
+    bool operator<(phan_so khac) {
+        return tu_so * khac.mau_so < khac.tu_so * mau_so;
+    }
+
+    // So sánh >=
+    bool operator>=(phan_so khac) {
+        return tu_so * khac.mau_so >= khac.tu_so * mau_so;
+    }
+
+    // So sánh <=
+    bool operator<=(phan_so khac) {
+        return tu_so * khac.mau_so <= khac.tu_so * mau_so;
+    }
+
+    // So sánh ==
+    bool operator==(phan_so khac) {
+        return tu_so * khac.mau_so == khac.tu_so * mau_so;
+    }
+
+    // In phân số
+    void in_ps() {
+        printf("%d/%d\n", tu_so, mau_so);
     }
 };
-
 void main() {
-    phan_so a, b;
-    a.tu_so = 3;  a.mau_so = 4;  
-    b.tu_so = 2;  b.mau_so = 3;   
+    phan_so a(1, 2);
+    phan_so b(2, 3);
+      
+    a.in_ps();  
+    b.in_ps();  
 
-    if (a.lon_hon(b)) {
-        printf("Phan so a lon hon phan so b\n");
-    }
-    else {
-        printf("Phan so a khong lon hon phan so b\n");
-    }
+    if (a > b)
+        printf("a > b\n");
+    if (a < b)
+        printf("a < b\n");
+    if (a == b)
+        printf("a == b\n");
+    if (a >= b)
+        printf("a >= b\n");
+    if (a <= b)
+        printf("a <= b\n");
 
 
 }
