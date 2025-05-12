@@ -1,5 +1,15 @@
 ﻿#include <stdio.h>
-#include "phan_so.h"
+
+class phan_so {
+public:
+    int tu_so;
+    int mau_so;
+
+    void nhan(phan_so khac) {
+        tu_so = tu_so * khac.tu_so;
+        mau_so = mau_so * khac.mau_so;
+    }
+};
 
 void main() {
     phan_so a;
@@ -7,14 +17,12 @@ void main() {
     a.mau_so = 2;
 
     phan_so b;
-    b.tu_so = 2;
-    b.mau_so = 3;
+    b.tu_so = 3;
+    b.mau_so = 4;
 
-    phan_so c;
-    c = a.nhan_phan_so(b);
+    a.nhan(b); 
 
-    printf("Ket qua: %d/%d\n", c.tu_so, c.mau_so);
+    printf("result: %d/%d\n", a.tu_so, a.mau_so);
 
-  
+
 }
-
